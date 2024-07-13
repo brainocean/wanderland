@@ -11,7 +11,7 @@ export const world = {
    background: "black" 
 }
 
-export function render_world() {
+export function observe_world() {
   let canvsElm = document.createElement("canvas");
   new P5(sketch => {
     sketch.setup = function(){

@@ -1,9 +1,7 @@
 # 第一幕 漫漫世界的初创
 
 ```js
-import P5 from "npm:p5";
-import {html} from "npm:htl";
-import {render_world} from "../components/world.js";
+import {observe_world} from "../components/world.js";
 ```
 
 牛顿：孩子你好！
@@ -22,10 +20,10 @@ import {render_world} from "../components/world.js";
 
 漫漫：你能帮我开一个窗口吗？
 
-牛顿：好，开一个窗口。
-
-漫漫：哇！世界出现了！但是一片黑乎乎的，里面什么都没有？
+牛顿：好，开一个观察窗口。
 
 ```js
-render_world()
+observe_world()
 ```
+
+漫漫：哇！世界出现了！但是一片黑乎乎的，里面什么都没有？
