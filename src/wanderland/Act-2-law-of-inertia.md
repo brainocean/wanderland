@@ -14,11 +14,7 @@ import {pprint_world, observe_world} from "../components/world.js";
 const small_world = {
     objects: [{type:'ball', velocity: v}]
 }
-<<<<<<< HEAD
 display(pprint_world('小小的世界', small_world)) 
-=======
-display(pprint_world('小小的世界', small_world))
->>>>>>> 8671259 (add act2)
 ```
 
 ```js
