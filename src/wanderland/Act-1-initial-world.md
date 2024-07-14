@@ -1,7 +1,7 @@
 # 第一幕 漫漫世界的初创
 
 ```js
-import {pprint_world, observe_world, world} from "../components/world.js";
+import {pprint_world, observe_world} from "../components/world.js";
 ```
 
 牛顿：孩子你好！
@@ -30,7 +30,7 @@ display(pprint_world('空空的世界', empty_world));
 牛顿：好，开一个观察窗口。
 
 ```js
-observe_world(world)
+observe_world(empty_world)
 ```
 
 漫漫：哇！世界出现了！但是一片黑乎乎的，里面什么都没有？
