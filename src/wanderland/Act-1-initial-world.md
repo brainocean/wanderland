@@ -41,7 +41,7 @@ observe_world(empty_world)
 
 ```js
 const small_world = {
-    objects: ['ball']
+    objects: ['box']
 }
 display(pprint_world('小小的世界', small_world))
 ```

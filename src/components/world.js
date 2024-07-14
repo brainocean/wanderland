@@ -11,6 +11,23 @@ export function pprint_world(desc, obj) {
   return `${desc} ${JSON.stringify(obj, null, 2)}`;
 }
 
+function render_object(sketch, obj) {
+  switch (obj.type) {
+    case "ball":
+      sketch.circle(
+        (view_port.width * unit) / 2,
+        (view_port.height * unit) / 2,
+        unit
+      );
+      break;
+    case "box":
+      sketch.rect(view_port.width * unit / 2, view_port.height * unit / 2, unit, unit);
+      break;
+    default:
+      break;
+  }
+}
+
 export function observe_world(world) {
   let canvsElm = document.createElement("canvas");
   new P5((sketch) => {
@@ -22,13 +39,9 @@ export function observe_world(world) {
       );
     };
     sketch.draw = function () {
-      sketch.background("black");
+      sketch.background(world.background || "black");
       world.objects.forEach((obj) => {
-        sketch.circle(
-          (view_port.width * unit) / 2,
-          (view_port.height * unit) / 2,
-          unit
-        );
+        render_object(sketch, obj);
       });
     };
   });
