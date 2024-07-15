@@ -12,7 +12,7 @@ import {pprint_world, observe_world} from "../components/world.js";
 
 ```js
 const small_world = {
-    objects: [{type:'ball', velocity: v}]
+    objects: [{type:'ball', x:0, y:0, velocity: v}]
 }
 display(pprint_world('小小的世界', small_world)) 
 ```
@@ -25,10 +25,9 @@ observe_world(small_world)
 
 ```js
 const v = view(Inputs.button([
-  ["Increment", value => value + 1],
-  ["Decrement", value => value - 1],
-  ["Reset", value => 0]
-], {value: 0, label: "Velocity"}));
+  ["推一下", value => 1],
+  ["停下！", value => 0]
+], {value: 0}));
 ```
 
 漫漫：怎么这么慢？能不能再快点？
