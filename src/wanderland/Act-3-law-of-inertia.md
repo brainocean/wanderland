@@ -1,4 +1,4 @@
-# 第二幕 惯性定律/牛顿第一定律
+# 第三幕 惯性定律/牛顿第一定律
 
 ```js
 import {pprint_world, observe_world} from "../components/world.js";

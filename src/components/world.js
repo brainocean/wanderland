@@ -23,15 +23,15 @@ function render_object(sketch, obj) {
   switch (obj.type) {
     case "ball":
       sketch.circle(
-        (view_port.width * unit) / 2 + obj.x,
-        (view_port.height * unit) / 2 + obj.y,
+        (view_port.width * unit) / 2 + (obj.x || 0),
+        (view_port.height * unit) / 2 + (obj.y || 0),
         unit
       );
       break;
     case "box":
       sketch.rect(
-        (view_port.width * unit) / 2 + obj.x,
-        (view_port.height * unit) / 2 + obj.y,
+        (view_port.width * unit) / 2 + (obj.x || 0),
+        (view_port.height * unit) / 2 + (obj.y || 0),
         unit,
         unit
       );
@@ -43,17 +43,17 @@ function render_object(sketch, obj) {
 
 function get_or_create_canvas_element(canvasId) {
   let canvasElm;
-  if(canvasId) {
+  if (canvasId) {
     canvasElm = document.getElementById(canvasId);
     console.log(`found canvas element with id: ${canvasId}`);
   }
-  if(!canvasElm) {
+  if (!canvasElm) {
     canvasElm = document.createElement("canvas");
   }
   return canvasElm;
 }
 
-export function observe_world(world, canvasId) {
+export function observe_world(world, canvasId, updates = true) {
   const canvasElm = get_or_create_canvas_element(canvasId);
   new P5((sketch) => {
     sketch.setup = function () {
@@ -63,14 +63,23 @@ export function observe_world(world, canvasId) {
         canvasElm
       );
       sketch.rectMode(sketch.CENTER);
+      if (!updates) {
+        tick_world(world);
+        sketch.background(world.background || "black");
+        world.objects.forEach((obj) => {
+          render_object(sketch, obj);
+        });
+      }
     };
-    sketch.draw = function () {
-      tick_world(world);
-      sketch.background(world.background || "black");
-      world.objects.forEach((obj) => {
-        render_object(sketch, obj);
-      });
-    };
+    if (updates) {
+      sketch.draw = function () {
+        tick_world(world);
+        sketch.background(world.background || "black");
+        world.objects.forEach((obj) => {
+          render_object(sketch, obj);
+        });
+      };
+    }
   });
   return canvasElm;
 }
